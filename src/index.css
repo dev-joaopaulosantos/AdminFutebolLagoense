@@ -1,0 +1,22 @@
+:root {
+    --dark-green: #00533e;
+    --dark-blue: #314259;
+    --light-gray: #F5F5F5;
+    --teal-blue: #001324;
+  }
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica;
+    box-sizing: border-box;
+}
+h1{
+    color: var(--dark-blue);
+    margin-bottom: 1rem;
+    font-size: 2.1rem;
+}
+.bold{
+    font-weight: bold;
+    color: var(--dark-blue);
+}

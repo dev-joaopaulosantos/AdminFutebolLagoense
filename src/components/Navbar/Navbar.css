@@ -1,0 +1,38 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background-color: var(--dark-green);
+    color: var(--light-gray);
+}
+.navbar-logo{
+    display: flex;
+    align-items: center;
+}
+.navbar-logo img{
+    width: 90px;
+    margin-right: .8rem;
+}
+.navbar ul{
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+.navbar li, .navbar a{
+    text-decoration: none;
+    color: var(--light-gray);
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5s;
+    padding: .5rem .8rem;
+    margin: 0 .3rem;
+    border-radius: 5px;
+}
+.navbar li:hover{
+    background-color: var(--light-gray);
+    color: var(--dark-green);
+}
+/* Quando der hover no 'li' irá afetar o 'a' dentro de '.navbar li' */
+.navbar li:hover > a{ 
+    color: var(--dark-green);
+}
