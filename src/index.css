@@ -3,6 +3,8 @@
     --dark-blue: #314259;
     --light-gray: #F5F5F5;
     --teal-blue: #001324;
+    --text-success: #14A44D;
+    --text-danger: #DC4C64;
   }
 
 *{
@@ -16,7 +18,16 @@ h1{
     margin-bottom: 1rem;
     font-size: 2.1rem;
 }
+h3{
+    color: var(--dark-green);
+}
 .bold{
     font-weight: bold;
-    color: var(--dark-blue);
+    color: var(--dark-green);
+}
+.text-success{
+    color: var(--text-success);
+}
+.text-danger{
+    color: var(--text-danger);
 }

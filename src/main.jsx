@@ -10,6 +10,7 @@ import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 import App from './App'
 import AddChampionship from './pages/AddChampionship/AddChampionship'
+import EditChampionship from './pages/EditChampionship/EditChampionship'
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/add/championship",
         element: <AddChampionship />
+      },
+      {
+        path: "edit/championship/:id",
+        element: <EditChampionship />
       }
     ]
   },
