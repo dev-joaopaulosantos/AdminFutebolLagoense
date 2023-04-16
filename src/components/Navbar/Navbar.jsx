@@ -18,7 +18,8 @@ const Navbar = () => {
                 {
                     authenticated ? (
                         <>
-                            {/* <li><Link to={"/user/profile"}>Teste</Link></li> */}
+                            <li><Link to={"/"}>Campeonatos</Link></li>
+                            <li><Link to={"/teams"}>Equipes</Link></li>
                             <li onClick={logout} >Sair</li>
                         </>
                     ) : (

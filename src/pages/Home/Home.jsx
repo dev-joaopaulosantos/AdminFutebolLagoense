@@ -6,6 +6,7 @@ import useFlashMessage from '../../hooks/useFlashMessage'
 
 
 import getYear from '../../utils/getYear'
+import LoadingPage from '../LoadingPage/LoadingPage'
 
 const Home = () => {
    const [championships, setChampionships] = useState([])
@@ -41,7 +42,7 @@ const Home = () => {
    }
 
    return (
-      <section>
+      <section className='section-container'>
          <div className='dashboard-header'>
             <h1>Campeonatos Cadastrados</h1>
             <Link to='add/championship'>Cadastrar Campeonato</Link>
@@ -63,7 +64,7 @@ const Home = () => {
                ))
             )}
             {championships.length === 0 && (
-               <p>Não há campeonatos cadastrados</p>
+               <LoadingPage/>
             )}
          </div>
       </section>

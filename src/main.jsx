@@ -11,6 +11,9 @@ import Login from './pages/Login/Login'
 import App from './App'
 import AddChampionship from './pages/AddChampionship/AddChampionship'
 import EditChampionship from './pages/EditChampionship/EditChampionship'
+import Teams from './pages/Teams/Teams'
+import AddTeam from './pages/AddTeam/AddTeam'
+import EditTeam from './pages/EditTeam/EditTeam'
 
 
 const router = createBrowserRouter([
@@ -18,28 +21,19 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
-      {
-        path: "/",
-        element: <Home />
-      },
-      {
-        path: "/login",
-        element: <Login />
-      },
-      {
-        path: "/add/championship",
-        element: <AddChampionship />
-      },
-      {
-        path: "edit/championship/:id",
-        element: <EditChampionship />
-      }
+      { path: "/", element: <Home /> },
+      { path: "/login", element: <Login /> },
+      { path: "/add/championship", element: <AddChampionship /> },
+      { path: "/edit/championship/:id", element: <EditChampionship /> },
+      { path: "/teams", element: <Teams /> },
+      { path: "/add/team", element: <AddTeam /> },
+      { path: "/edit/team/:id", element: <EditTeam /> }
     ]
   },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-      <RouterProvider router={router} />
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )

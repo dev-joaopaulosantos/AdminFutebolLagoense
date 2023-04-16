@@ -2,33 +2,32 @@ import api from '../../utils/api'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import useFlashMessage from '../../hooks/useFlashMessage'
-import ChampionshipForm from '../../components/Form/ChampionshipForm'
+import TeamForm from '../../components/Form/TeamForm'
 import LoadingPage from '../LoadingPage/LoadingPage'
 
-const EditChampionship = () => {
-    const [championship, setChampionship] = useState({})
+const EditTeam = () => {
+    const [team, setTeam] = useState({})
     const [token] = useState(localStorage.getItem('Authtoken') || '')
     const { setFlashMessage } = useFlashMessage()
     const navigateTo = useNavigate()
     const { id } = useParams()
 
     useEffect(() => {
-        api.get(`/api/championships/${id}`, {
+        api.get(`/api/team/${id}`, {
             headers: {
                 Authorization: `Bearer ${JSON.parse(token)}`
             }
         }).then((response) => {
-            const championship = response.data.championship;
-            const formattedYear = new Date(championship.year).toISOString().substring(0, 10);
-            setChampionship({ ...championship, year: formattedYear });
+            setTeam(response.data.team)
+            console.log(response.data.team)
         });
 
     }, [token, id]);
 
-    const updateChampionship = async (championship) => {
+    const updateTeam = async (team) => {
         let msgType = 'success'
 
-        const data = await api.put(`/api/championships/${championship._id}`, championship, {
+        const data = await api.put(`/api/teams/${team._id}`, team, {
             headers: {
                 Authorization: `Bearer ${JSON.parse(token)}`
             }
@@ -42,23 +41,24 @@ const EditChampionship = () => {
 
         setFlashMessage(data.message, msgType)
         if (msgType !== 'error') {
-            navigateTo('/')
+            navigateTo('/teams')
         }
     }
 
+    console.log(team)
     return (
         <section className='section-container'>
             <div>
-                <h1>Editando Campeonato: {championship.name} {championship.year}</h1>
+                <h1>Editando Campeonato: {team.name}</h1>
             </div>
-            {!championship.name && (
-                <ChampionshipForm handleSubmit={updateChampionship} btnText='Atualizar' championshipData={championship} />
+            {team.name && (
+                <TeamForm handleSubmit={updateTeam} btnText='Atualizar' teamData={team} />
             )}
-            {championship.name && (
+            {!team.name && (
                 <LoadingPage />
             )}
         </section>
     )
 }
 
-export default EditChampionship
+export default EditTeam
