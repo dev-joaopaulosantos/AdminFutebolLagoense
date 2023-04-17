@@ -45,11 +45,11 @@ const EditTeam = () => {
         }
     }
 
-    console.log(team)
+    console.log(team) 
     return (
-        <section className='section-container'>
+        <section>
             <div>
-                <h1>Editando Campeonato: {team.name}</h1>
+                <h1>Editando Equipe: {team.name}</h1>
             </div>
             {team.name && (
                 <TeamForm handleSubmit={updateTeam} btnText='Atualizar' teamData={team} />

@@ -51,10 +51,10 @@ const EditChampionship = () => {
             <div>
                 <h1>Editando Campeonato: {championship.name} {championship.year}</h1>
             </div>
-            {!championship.name && (
+            {championship.name && (
                 <ChampionshipForm handleSubmit={updateChampionship} btnText='Atualizar' championshipData={championship} />
             )}
-            {championship.name && (
+            {!championship.name && (
                 <LoadingPage />
             )}
         </section>

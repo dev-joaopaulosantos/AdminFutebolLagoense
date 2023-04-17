@@ -20,6 +20,7 @@ const Navbar = () => {
                         <>
                             <li><Link to={"/"}>Campeonatos</Link></li>
                             <li><Link to={"/teams"}>Equipes</Link></li>
+                            <li><Link to={"/classifications"}>Classificações</Link></li>
                             <li onClick={logout} >Sair</li>
                         </>
                     ) : (
