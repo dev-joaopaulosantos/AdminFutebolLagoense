@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import api from '../../utils/api'
 import '../DashboardGlobal.css'
 import useFlashMessage from '../../hooks/useFlashMessage'
-import LoadingPage from '../LoadingPage/LoadingPage'
+import getYear from '../../utils/getYear'
 
 const Classifications = () => {
     const [classifications, setclassifications] = useState([])
@@ -44,7 +44,7 @@ const Classifications = () => {
     return (
         <section className='section-container'>
             <div className='dashboard-header'>
-                <h1>Classificações</h1>
+                <h1>Classificação do campeonato: {selectedChampionship.name} {getYear(selectedChampionship.year)}</h1>
                 <Link to='/add/classification'>Cadastrar Classificação</Link>
             </div>
             <div className='table-container'>
