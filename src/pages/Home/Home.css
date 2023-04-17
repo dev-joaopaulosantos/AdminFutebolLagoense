@@ -1,0 +1,6 @@
+.selected {
+    border: 1px solid var(--dark-green);
+    border-radius: 10px;
+    background-color: #00533e17;
+  }
+  

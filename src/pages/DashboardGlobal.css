@@ -22,6 +22,7 @@
 .dashboard-container{
     display: flex;
     flex-direction: column;
+    gap: .5rem;
 }
 .dashboard-row{
     border-bottom: 1px solid var(--dark-blue);
