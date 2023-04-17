@@ -15,6 +15,7 @@ import Teams from './pages/Teams/Teams'
 import AddTeam from './pages/AddTeam/AddTeam'
 import EditTeam from './pages/EditTeam/EditTeam'
 import Classifications from './pages/Classifications/Classifications'
+import AddClassification from './pages/AddClassification/AddClassification'
 
 
 const router = createBrowserRouter([
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
       { path: "/add/team", element: <AddTeam /> },
       { path: "/edit/team/:id", element: <EditTeam /> },
       { path: "/classifications", element: <Classifications /> },
+      { path: "/add/classification", element: <AddClassification /> },
     ]
   },
 ])

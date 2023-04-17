@@ -11,10 +11,10 @@ const AddTeam = () => {
    const { setFlashMessage } = useFlashMessage()
    const navigateTo = useNavigate()
 
-   const registerTeam = async (championship) => {
+   const registerTeam = async (team) => {
       let msgType = 'success'
 
-      const data = await api.post('/api/teams', championship, {
+      const data = await api.post('/api/teams', team, {
          headers: {
             Authorization: `Bearer ${JSON.parse(token)}`,
          },

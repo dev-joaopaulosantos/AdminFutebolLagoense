@@ -10,16 +10,16 @@ const Classifications = () => {
     const [classifications, setclassifications] = useState([])
     const [token] = useState(localStorage.getItem('Authtoken') || '')
     const { setFlashMessage } = useFlashMessage()
+    const [selectedChampionship] = useState(JSON.parse(localStorage.getItem('selectedChampionship')) || {});
 
+    
     useEffect(() => {
 
-        api.get('/api/classification/642f84edcb4d82be673305da').then((response) => {
+        api.get(`/api/classification/${selectedChampionship._id}`).then((response) => {
             setclassifications(response.data.classifications)
         })
 
     }, [])
-
-    console.log('Classificações:', classifications)
 
     const removeClassification = async (id) => {
         let msgType = 'success'
@@ -63,6 +63,7 @@ const Classifications = () => {
                                 <th>SG</th>
                                 <th>CV</th>
                                 <th>CA</th>
+                                <th>GP</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -80,6 +81,7 @@ const Classifications = () => {
                                     <td>{classification.goalDifference}</td>
                                     <td>{classification.yellowCards}</td>
                                     <td>{classification.redCards}</td>
+                                    <td>{classification.group}</td>
                                     <td className='table-actions'>
                                         <Link to={`/edit/classification/${classification._id}`}>Editar</Link>
                                         <button className='danger' onClick={() => { removeClassification(classification._id) }}>Excluir</button>
@@ -90,7 +92,7 @@ const Classifications = () => {
                     </table>
                 )}
                 {classifications.length === 0 && (
-                    <LoadingPage />
+                    <h3>Não há Classificações cadastradas no campeonato selecionado!</h3>
                 )}
             </div>
         </section>
@@ -98,52 +100,3 @@ const Classifications = () => {
 }
 
 export default Classifications
-
-{/* <div className='dashboard-row' key={classification._id}>
-<div className='classification-infos'>
-    <div className='name-shield'>
-        <img src={classification.team.shield} alt={classification.name} />
-        <p>{classification.team.name}</p>
-    </div>
-    <div className='info'>
-        <p>P</p>
-        <p>{classification.points}</p>
-    </div>
-    <div className='info'>
-        <p>V</p>
-        <p>{classification.victories}</p>
-    </div>
-    <div className='info'>
-        <p>E</p>
-        <p>{classification.ties}</p>
-    </div>
-    <div className='info'>
-        <p>D</p>
-        <p>{classification.defeats}</p>
-    </div>
-    <div className='info'>
-        <p>G.M</p>
-        <p>{classification.goalsScored}</p>
-    </div>
-    <div className='info'>
-        <p>G.C</p>
-        <p>{classification.goalsConceded}</p>
-    </div>
-    <div className='info'>
-        <p>S.G</p>
-        <p>{classification.goalDifference}</p>
-    </div>
-    <div className='info'>
-        <p>C.V</p>
-        <p>{classification.yellowCards}</p>
-    </div>
-    <div className='info'>
-        <p>C.A</p>
-        <p>{classification.redCards}</p>
-    </div>
-</div>
-<div className='actions'>
-    <Link to={`/edit/classification/${classification._id}`}>Editar</Link>
-    <button className='danger' onClick={() => { removeClassification(classification._id) }}>Excluir</button>
-</div>
-</div> */}

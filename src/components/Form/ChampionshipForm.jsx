@@ -25,7 +25,7 @@ const ChampionshipForm = ({ handleSubmit, championshipData, btnText }) => {
     }
     return (
         <form onSubmit={submit} className='form-container'>
-            <Input text='Nome do campeonato' type='text' name='name' placeholder='Digite o nome do campeonato' handleOnChange={handleChange} value={championship.name || ''} />
+            <Input text='Campeonato' type='text' name='name' placeholder='Digite o nome do campeonato' handleOnChange={handleChange} value={championship.name || ''} />
             <Input text='Data de início' type='date' name='year' handleOnChange={handleChange} value={championship.year || ''} />
             <SelectForm
                 text='Possui fase de grupos?'
