@@ -16,6 +16,7 @@ import AddTeam from './pages/AddTeam/AddTeam'
 import EditTeam from './pages/EditTeam/EditTeam'
 import Classifications from './pages/Classifications/Classifications'
 import AddClassification from './pages/AddClassification/AddClassification'
+import EditClassification from './pages/EditClassification/EditClassification'
 
 
 const router = createBrowserRouter([
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
       { path: "/edit/team/:id", element: <EditTeam /> },
       { path: "/classifications", element: <Classifications /> },
       { path: "/add/classification", element: <AddClassification /> },
+      { path: "/edit/classification/:id", element: <EditClassification /> },
     ]
   },
 ])

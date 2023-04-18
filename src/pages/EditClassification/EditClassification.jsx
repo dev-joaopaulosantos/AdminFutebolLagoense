@@ -2,32 +2,27 @@ import api from '../../utils/api'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import useFlashMessage from '../../hooks/useFlashMessage'
-import TeamForm from '../../components/Form/TeamForm'
+import ClassificationForm from '../../components/Form/ClassificationForm'
 import LoadingPage from '../LoadingPage/LoadingPage'
 
-const EditTeam = () => {
-    const [team, setTeam] = useState({})
+const EditClassification = () => {
+    const [classification, setClassification] = useState(null)
     const [token] = useState(localStorage.getItem('Authtoken') || '')
     const { setFlashMessage } = useFlashMessage()
     const navigateTo = useNavigate()
     const { id } = useParams()
 
     useEffect(() => {
-        api.get(`/api/team/${id}`, {
-            headers: {
-                Authorization: `Bearer ${JSON.parse(token)}`
-            }
-        }).then((response) => {
-            setTeam(response.data.team)
-            console.log(response.data.team)
+        api.get(`/api/oneclassification/${id}`).then((response) => {
+            setClassification(response.data.classification[0])
         });
 
     }, [token, id]);
 
-    const updateTeam = async (team) => {
+    const updateClassification = async (classification) => {
         let msgType = 'success'
 
-        const data = await api.put(`/api/teams/${team._id}`, team, {
+        const data = await api.put(`/api/classification/${classification._id}`, classification, {
             headers: {
                 Authorization: `Bearer ${JSON.parse(token)}`
             }
@@ -41,23 +36,23 @@ const EditTeam = () => {
 
         setFlashMessage(data.message, msgType)
         if (msgType !== 'error') {
-            navigateTo('/teams')
+            navigateTo('/classifications')
         }
     }
 
     return (
         <section>
             <div>
-                <h1>Editando Equipe: {team.name}</h1>
+                <h1>Editando Classificação:</h1>
             </div>
-            {team.name && (
-                <TeamForm handleSubmit={updateTeam} btnText='Atualizar' teamData={team} />
+            {classification && (
+                <ClassificationForm handleSubmit={updateClassification} classificationData={classification} btnText="Atualizar" />
             )}
-            {!team.name && (
+            {!classification && (
                 <LoadingPage />
             )}
         </section>
     )
 }
 
-export default EditTeam
+export default EditClassification

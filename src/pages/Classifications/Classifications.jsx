@@ -24,12 +24,12 @@ const Classifications = () => {
     const removeClassification = async (id) => {
         let msgType = 'success'
 
-        const data = await api.delete(`/api/classifications/${id}`, {
+        const data = await api.delete(`/api/classification/${id}`, {
             headers: {
                 Authorization: `Bearer ${JSON.parse(token)}`
             }
         }).then((response) => {
-            const updatedclassifications = classifications.filter((team) => team._id !== id)
+            const updatedclassifications = classifications.filter((classification) => classification._id !== id)
             setclassifications(updatedclassifications)
             return response.data
 

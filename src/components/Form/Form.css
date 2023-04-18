@@ -39,3 +39,7 @@
     height: 100px;
     margin-left: 1rem;
 }
+
+select option {
+    font-size: 1rem;
+}

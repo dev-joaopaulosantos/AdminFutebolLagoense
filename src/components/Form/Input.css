@@ -1,15 +1,15 @@
 .form-control{
     display: flex;
     flex-direction: column;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
 }
 .form-control label{
-    margin-bottom: .3rem;
+    margin-bottom: 2rem;
     font-weight: bold;
     font-size: .8rem;
 }
 .form-control input{
-    padding: .7rem;
+    padding: .5rem;
     border: 1px solid #777;
     border-radius: 5px;
 }
