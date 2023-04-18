@@ -54,6 +54,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
 }
 .actions .danger{
     color: var(--text-danger);
@@ -69,8 +71,6 @@
     border-radius: 5px;
     border: 2px solid var(--dark-blue);
     font-size: 12px;
-    margin-left: 1rem;
-
 }
 .actions a:hover, .actions button:hover{
     background-color: var(--dark-blue);

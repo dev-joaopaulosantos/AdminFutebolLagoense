@@ -49,6 +49,9 @@ const Home = () => {
          setSelectedChampionship(JSON.parse(savedChampionship));
       }
    }, []);
+   useEffect(() => {
+      
+   }, [championships])
 
    const handleSelectChampionship = (championship) => {
       setSelectedChampionship(championship);
