@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import api from '../../utils/api'
 import '../DashboardGlobal.css'
-import './Home.css'
+import './Championship.css'
 import useFlashMessage from '../../hooks/useFlashMessage'
 
 
 import getYear from '../../utils/getYear'
 import LoadingPage from '../LoadingPage/LoadingPage'
 
-const Home = () => {
+const Championship = () => {
    const [championships, setChampionships] = useState([])
    const [token] = useState(localStorage.getItem('Authtoken') || '')
    const { setFlashMessage } = useFlashMessage()
@@ -89,4 +89,4 @@ const Home = () => {
    );
 }
 
-export default Home
+export default Championship
