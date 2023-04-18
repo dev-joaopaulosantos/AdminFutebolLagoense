@@ -19,7 +19,7 @@ const EditTeam = () => {
             }
         }).then((response) => {
             setTeam(response.data.team)
-            console.log(response.data.team)
+            
         });
 
     }, [token, id]);

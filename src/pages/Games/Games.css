@@ -1,0 +1,41 @@
+.dashboard-infos-game{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.dashboard-infos-game .header{
+    display: flex;
+    justify-content: space-between;
+}
+.dashboard-infos-game p{
+    min-width: 150px;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(255, 0, 0, 0.295);
+    padding: .2rem;
+}
+.dashboard-infos-game .game{
+    display: flex;
+    justify-content: space-between;
+}
+.dashboard-infos-game .game div{
+    min-width: 150px;
+    text-align: center;
+    background-color: rgba(0, 128, 0, 0.288);
+}
+.dashboard-infos-game .team img{
+    width: 35px;
+    height: 35px;
+}
+.dashboard-infos-game .infos span{
+    margin: 0 .2rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.dashboard-infos-game .info{
+    width: 160px;
+    padding: .2rem;
+    border:  1px solid var(--dark-blue);
+    border-radius: 5px;
+}
