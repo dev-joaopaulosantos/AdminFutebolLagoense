@@ -7,7 +7,7 @@ const SelectForm = ({text, name, options, handleOnChange, value}) => {
         <select name={name} id={name} onChange={handleOnChange} value={value}>
             <option>Selecione uma opção</option>
             {options.map((option) => (
-                <option key={option.valor} value={option.valor} label={option.texto}>{option.texto}</option>
+                <option key={option.value} value={option.value} label={option.text}>{option.text}</option>
             ))}
         </select>
     </div>

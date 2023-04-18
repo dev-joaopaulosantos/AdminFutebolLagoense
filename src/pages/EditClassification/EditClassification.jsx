@@ -14,7 +14,7 @@ const EditClassification = () => {
 
     useEffect(() => {
         api.get(`/api/oneclassification/${id}`).then((response) => {
-            setClassification(response.data.classification[0])
+            setClassification(response.data.classification)
         });
 
     }, [token, id]);

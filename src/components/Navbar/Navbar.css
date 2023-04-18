@@ -24,8 +24,8 @@
     font-weight: bold;
     cursor: pointer;
     transition: .5s;
-    padding: .5rem .8rem;
-    margin: 0 .3rem;
+    padding: .5rem .2rem;
+    margin: 0 .2rem;
     border-radius: 5px;
 }
 .navbar li:hover{

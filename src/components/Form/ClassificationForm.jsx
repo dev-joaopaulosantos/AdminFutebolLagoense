@@ -11,13 +11,14 @@ const ClassificationForm = ({ handleSubmit, classificationData, btnText }) => {
     const [classification, setClassification] = useState(classificationData || {})
     const [championships, setChampionships] = useState([])
     const [teams, setTeams] = useState([])
+    const [selectedChampionship] = useState(JSON.parse(localStorage.getItem('selectedChampionship')))
 
     const optionsChampionships = championships.map((championship) => (
-        { key: championship._id, texto: `${championship.name} ${getYear(championship.year)}`, valor: championship._id }
+        { key: championship._id, text: `${championship.name} ${getYear(championship.year)}`, value: championship._id }
     ))
 
     const optionsTeams = teams.map((team) => (
-        {key: team._id, texto: team.name, valor: team._id}
+        { key: team._id, text: team.name, value: team._id }
     ))
 
     useEffect(() => {
@@ -29,6 +30,8 @@ const ClassificationForm = ({ handleSubmit, classificationData, btnText }) => {
         api.get('/api/teams').then((response) => {
             setTeams(response.data.teams)
         })
+
+        setClassification({...classification, championship: selectedChampionship._id})
 
     }, [])
 
@@ -49,6 +52,7 @@ const ClassificationForm = ({ handleSubmit, classificationData, btnText }) => {
         handleSubmit(classification)
 
     }
+
     return (
         <form onSubmit={submit} className='form-container'>
             <SelectForm
@@ -56,7 +60,7 @@ const ClassificationForm = ({ handleSubmit, classificationData, btnText }) => {
                 name='classification'
                 options={optionsChampionships}
                 handleOnChange={handleOptionsChampionships}
-                value={classification.championship || ''}
+                value={classification.championship}
             />
             <SelectForm
                 text='Equipe'

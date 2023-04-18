@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Form.css'
 import Input from './Input'
 import SelectForm from './SelectForm'
@@ -6,9 +6,15 @@ import SelectForm from './SelectForm'
 const ChampionshipForm = ({ handleSubmit, championshipData, btnText }) => {
     const [championship, setChampionship] = useState(championshipData || {})
     const groupStages = [
-        { texto: 'Sim', valor: true },
-        { texto: 'Não', valor: false }
+        { text: 'Sim', value: true },
+        { text: 'Não', value: false }
     ]
+
+    useEffect(() => {
+        if(championship.groupStage === false){
+            setChampionship({...championship, groupStage: 'false'})
+        }
+    })
 
     const handleChange = (e) => {
         setChampionship({ ...championship, [e.target.name]: e.target.value })
@@ -23,6 +29,9 @@ const ChampionshipForm = ({ handleSubmit, championshipData, btnText }) => {
         handleSubmit(championship)
 
     }
+
+    
+
     return (
         <form onSubmit={submit} className='form-container'>
             <Input text='Campeonato' type='text' name='name' placeholder='Digite o nome do campeonato' handleOnChange={handleChange} value={championship.name || ''} />
