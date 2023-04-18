@@ -54,12 +54,12 @@ const Games = () => {
             <div className='dashboard-container'>
                 {games.length > 0 && (
                     games.map((game) => (
-                        <div className='dashboard-row' key={game._id}>
-                            <div className='dashboard-infos-game'>
+                        <div className='row-game' key={game._id}>
+                            <div className='infos-game'>
                                 <div className='header'>
-                                    <p style={{justifyContent: 'flex-start'}}>{game.local}</p>
-                                    <p>{game.gameInfo}</p>
-                                    <p style={{justifyContent: 'flex-end'}}>{new Date(game.date).toISOString().substring(0, 10)}</p>
+                                    <p style={{ justifyContent: 'flex-start' }}>{game.local}</p>
+                                    <p style={{textTransform: 'uppercase'}}>{game.gameInfo}</p>
+                                    <p style={{ justifyContent: 'flex-end' }}>{new Date(game.date).toISOString().substring(0, 10)}</p>
                                 </div>
                                 <div className='game'>
                                     <div className='team'>
@@ -70,12 +70,12 @@ const Games = () => {
                                         <p>{game.matchStatus}</p>
                                         <div>
                                             <span>{game.homeGoals}</span>
-                                            <span>{game.penaltyGoalsHome}</span>
+                                            <span className='penalty-goals'>{game.penaltyGoalsHome}</span>
                                             <span>x</span>
-                                            <span>{game.awayPenaltyGoals}</span>
+                                            <span className='penalty-goals'>{game.awayPenaltyGoals}</span>
                                             <span>{game.awayGoals}</span>
                                         </div>
-                                        <p>{game.penaltyStatus ? 'PENALTE' : ''}</p>
+                                        <p>{game.penaltyStatus ? 'PENALTI' : ''}</p>
                                     </div>
                                     <div className='team'>
                                         <img src={game.awayTeam.shield} alt={game.awayTeam.name} />
