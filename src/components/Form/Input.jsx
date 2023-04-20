@@ -1,6 +1,6 @@
 import './Input.css'
 
-const Input = ({ type, text, name, placeholder, handleOnChange, value, multiple }) => {
+const Input = ({ type, text, name, placeholder, handleOnChange, value }) => {
     return (
         <div className='form-control'>
             <label htmlFor={name}>{text}:</label>
@@ -11,7 +11,6 @@ const Input = ({ type, text, name, placeholder, handleOnChange, value, multiple 
                 placeholder={placeholder}
                 onChange={handleOnChange}
                 value={value}
-                {...(multiple ? { multiple } : '')}
             />
         </div>
     )

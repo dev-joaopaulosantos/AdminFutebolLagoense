@@ -8,14 +8,10 @@ import LoadingPage from '../LoadingPage/LoadingPage'
 import getYear from '../../utils/getYear'
 
 const Games = () => {
-    const [games, setGames] = useState([])
+    const [games, setGames] = useState(null)
     const [token] = useState(localStorage.getItem('Authtoken') || '')
     const { setFlashMessage } = useFlashMessage()
     const [selectedChampionship] = useState(JSON.parse(localStorage.getItem('selectedChampionship')))
-
-    if (games.length > 0) {
-        console.log(games)
-    }
 
     useEffect(() => {
 
@@ -52,7 +48,7 @@ const Games = () => {
                 <Link to='/add/game'>Cadastrar Jogo</Link>
             </div>
             <div className='dashboard-container'>
-                {games.length > 0 && (
+                {games && games.length > 0 && (
                     games.map((game) => (
                         <div className='row-game' key={game._id}>
                             <div className='infos-game'>
@@ -90,7 +86,10 @@ const Games = () => {
                         </div>
                     ))
                 )}
-                {games.length === 0 && (
+                {games && games.length === 0 && (
+                    <h1>Ainda não há jogos cadastrados no campeonato selecionado!</h1>
+                )}
+                {!games && (
                     <LoadingPage />
                 )}
             </div>

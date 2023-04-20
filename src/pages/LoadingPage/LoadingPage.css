@@ -5,3 +5,7 @@
     justify-content: center;
     align-items: center;
 }
+.loading-page img{
+    width: 80px;
+    height: 80px;
+}

@@ -1,77 +1,73 @@
-.row-game{
-    padding: .5rem;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    gap: .5rem;
+.row-game {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.5rem;
 }
-.infos-game{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--dark-blue);
-    border-radius: 10px;
-    background-color: #00533e17;
+.infos-game {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--dark-blue);
+  border-radius: 10px;
+  background-color: #00533e17;
 }
-.infos-game p{
-    min-width: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: .2rem;
+.infos-game p {
+  min-width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2rem;
 }
-.infos-game .header{
-    display: flex;
-    justify-content: space-between;
+.infos-game .header {
+  display: flex;
+  justify-content: space-between;
 }
-.infos-game .game{
-    display: flex;
-    justify-content: space-between;
-    border-top: 1px solid var(--dark-blue);
-    border-radius: 10px;
-    background-color: #00533e17;
+.infos-game .game {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--dark-blue);
+  border-radius: 10px;
+  background-color: #00533e17;
 }
-.infos-game .game div{
-    min-width: 150px;
-    text-align: center;
+.infos-game .game div {
+  min-width: 150px;
+  text-align: center;
 }
 .infos-game .team {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
-.infos-game .team img{
-    width: 35px;
-    height: 35px;
-    margin: .3rem;
+.infos-game .team img {
+  width: 35px;
+  height: 35px;
+  margin: 0.3rem;
 }
-.infos-game .infos span{
-    margin: .2rem;
-    font-size: 1.6rem;
-    font-weight: bold;
+.infos-game .infos span {
+  margin: 0.2rem;
+  font-size: 1.6rem;
+  font-weight: bold;
 }
-.infos-game .infos div{
-    margin: .4rem 0;
+.infos-game .infos div {
+  margin: 0.4rem 0;
 }
-.infos-game .infos .penalty-goals{
-    font-size: 1rem;
+.infos-game .infos .penalty-goals {
+  font-size: 1rem;
 }
-/* #actions-game{
-    border-bottom: 1px solid var(--dark-blue);
-    border-radius: 10px;
-} */
-
-#penaltyStatus, #matchStatus{
-    margin: 0;
-    padding: 0;
-    background-color: #00533e17;
-    min-height: 22px;
-    text-transform: capitalize;
+.infos #penaltyStatus,
+.infos #matchStatus {
+  margin: 0;
+  padding: 0;
+  background-color: #00533e17;
+  min-height: 22px;
+  text-transform: capitalize;
 }
-#matchStatus{
-    border-radius: 0 0 8px 8px;
+.infos #matchStatus {
+  border-radius: 0 0 8px 8px;
 }
-#penaltyStatus{
-    border-radius: 8px 8px 0 0;
+.infos #penaltyStatus {
+  border-radius: 8px 8px 0 0;
 }

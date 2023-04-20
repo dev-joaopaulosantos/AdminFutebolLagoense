@@ -6,7 +6,7 @@ import useFlashMessage from '../../hooks/useFlashMessage'
 import LoadingPage from '../LoadingPage/LoadingPage'
 
 const Teams = () => {
-   const [teams, setTeams] = useState([])
+   const [teams, setTeams] = useState(null)
    const [token] = useState(localStorage.getItem('Authtoken') || '')
    const { setFlashMessage } = useFlashMessage()
 
@@ -45,7 +45,7 @@ const Teams = () => {
             <Link to='/add/team'>Cadastrar Equipe</Link>
          </div>
          <div className='dashboard-container'>
-            {teams.length > 0 && (
+            {teams && teams.length > 0 && (
                teams.map((team) => (
                   <div className='dashboard-row' key={team._id}>
                      <div className='dashboard-infos'>
@@ -59,7 +59,10 @@ const Teams = () => {
                   </div>
                ))
             )}
-            {teams.length === 0 && (
+            {teams && teams.length === 0 && (
+               <h1>Ainda não há jogos cadastrados na base de dados!</h1>
+            )}
+            {!teams && (
                <LoadingPage />
             )}
          </div>

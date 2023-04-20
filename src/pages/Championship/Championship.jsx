@@ -10,7 +10,7 @@ import getYear from '../../utils/getYear'
 import LoadingPage from '../LoadingPage/LoadingPage'
 
 const Championship = () => {
-   const [championships, setChampionships] = useState([])
+   const [championships, setChampionships] = useState(null)
    const [token] = useState(localStorage.getItem('Authtoken') || '')
    const { setFlashMessage } = useFlashMessage()
    const [selectedChampionship, setSelectedChampionship] = useState('');
@@ -65,7 +65,7 @@ const Championship = () => {
             <Link to='/add/championship'>Cadastrar Campeonato</Link>
          </div>
          <div className='dashboard-container'>
-            {championships.length > 0 && (
+            {championships && championships.length > 0 && (
                championships.map((championship) => (
                   <div key={championship._id} className={`dashboard-row ${selectedChampionship && selectedChampionship._id === championship._id ? 'selected' : ''}`}>
                      <div className='dashboard-infos'>
@@ -81,7 +81,10 @@ const Championship = () => {
                   </div>
                ))
             )}
-            {championships.length === 0 && (
+            {championships && championships.length === 0 && (
+               <h1>Ainda não há campeonatos cadastrados na base de dados!</h1>
+            )}
+            {!championships && (
                <LoadingPage />
             )}
          </div>

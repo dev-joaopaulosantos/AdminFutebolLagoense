@@ -18,6 +18,8 @@ import Classifications from './pages/Classifications/Classifications'
 import AddClassification from './pages/Classifications/AddClassification'
 import EditClassification from './pages/Classifications/EditClassification'
 import Games from './pages/Games/Games'
+import AddGame from './pages/Games/AddGame'
+import EditGame from './pages/Games/EditGame'
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,8 @@ const router = createBrowserRouter([
       { path: "/add/classification", element: <AddClassification /> },
       { path: "/edit/classification/:id", element: <EditClassification /> },
       { path: "/games", element: <Games /> },
+      { path: "/add/game", element: <AddGame /> },
+      { path: "/edit/game/:id", element: <EditGame /> },
     ]
   },
 ])

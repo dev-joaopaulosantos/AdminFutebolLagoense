@@ -5,9 +5,10 @@ import api from '../../utils/api'
 import '../DashboardGlobal.css'
 import useFlashMessage from '../../hooks/useFlashMessage'
 import getYear from '../../utils/getYear'
+import LoadingPage from '../LoadingPage/LoadingPage'
 
 const Classifications = () => {
-    const [classifications, setclassifications] = useState([])
+    const [classifications, setclassifications] = useState(null)
     const [token] = useState(localStorage.getItem('Authtoken') || '')
     const { setFlashMessage } = useFlashMessage()
     const [selectedChampionship] = useState(JSON.parse(localStorage.getItem('selectedChampionship')) || {});
@@ -48,13 +49,14 @@ const Classifications = () => {
                 <Link to='/add/classification'>Cadastrar Classificação</Link>
             </div>
             <div className='table-container'>
-                {classifications.length > 0 && (
+                {classifications && classifications.length > 0 && (
                     <table>
                         <thead>
                             <tr>
                                 <th>Escudo</th>
                                 <th>Nome</th>
                                 <th>P</th>
+                                <th>J</th>
                                 <th>V</th>
                                 <th>E</th>
                                 <th>D</th>
@@ -73,6 +75,7 @@ const Classifications = () => {
                                     <td><img src={classification.team.shield} alt={classification.team.name} /></td>
                                     <td>{classification.team.name}</td>
                                     <td>{classification.points}</td>
+                                    <td>{classification.games}</td>
                                     <td>{classification.victories}</td>
                                     <td>{classification.ties}</td>
                                     <td>{classification.defeats}</td>
@@ -91,8 +94,11 @@ const Classifications = () => {
                         </tbody>
                     </table>
                 )}
-                {classifications.length === 0 && (
+                {classifications && classifications.length === 0 && (
                     <h3>Não há Classificações cadastradas no campeonato selecionado!</h3>
+                )}
+                {!classifications && (
+                    <LoadingPage />
                 )}
             </div>
         </section>
