@@ -21,6 +21,8 @@ const GameForm = ({ handleSubmit, gameData, btnText }) => {
         { key: team._id, text: team.name, value: team._id }
     ))
 
+    console.log(game)
+
     useEffect(() => {
         const propertiesToCheck = {
             penaltyStatus: false,
@@ -57,21 +59,15 @@ const GameForm = ({ handleSubmit, gameData, btnText }) => {
 
     const handleChange = (e) => {
         setGame({ ...game, [e.target.name]: e.target.value })
-
     }
     const handleOptions = (e) => {
         const value = e.target.value
         setGame({ ...game, [e.target.name]: value })
-        console.log(e.target.value)
     }
-
     const submit = (e) => {
         e.preventDefault()
         handleSubmit(game)
-
     }
-
-    console.log(game)
 
     return (
         <form onSubmit={submit} className='form-container'>

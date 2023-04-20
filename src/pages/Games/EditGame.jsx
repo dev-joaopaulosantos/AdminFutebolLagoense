@@ -13,7 +13,7 @@ const EditGame = () => {
     const { id } = useParams()
 
     useEffect(() => {
-        api.get(`/api/onegame/${id}`, {
+        api.get(`/api/onegameoriginal/${id}`, {
 
         }).then((response) => {
             const game = response.data.game;
@@ -22,8 +22,6 @@ const EditGame = () => {
         });
 
     }, [token, id]);
-
-    console.log(game)
 
     const updateGame = async (game) => {
         let msgType = 'success'
