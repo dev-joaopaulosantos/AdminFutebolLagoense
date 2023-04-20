@@ -22,8 +22,6 @@ const Classifications = () => {
 
     }, [])
 
-    console.log(classifications)
-
     const removeClassification = async (id) => {
         let msgType = 'success'
 

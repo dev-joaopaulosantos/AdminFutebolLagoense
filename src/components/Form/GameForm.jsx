@@ -21,8 +21,6 @@ const GameForm = ({ handleSubmit, gameData, btnText }) => {
         { key: team._id, text: team.name, value: team._id }
     ))
 
-    console.log(game)
-
     useEffect(() => {
         const propertiesToCheck = {
             penaltyStatus: false,

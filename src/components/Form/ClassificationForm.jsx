@@ -78,8 +78,6 @@ const ClassificationForm = ({ handleSubmit, classificationData, btnText }) => {
         handleSubmit(classification)
     }
 
-    console.log(classification)
-
     return (
         <form onSubmit={submit} className='form-container'>
             <SelectForm
