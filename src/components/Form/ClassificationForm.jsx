@@ -31,9 +31,35 @@ const ClassificationForm = ({ handleSubmit, classificationData, btnText }) => {
             setTeams(response.data.teams)
         })
 
-        setClassification({...classification, championship: selectedChampionship._id})
+        setClassification({ ...classification, championship: selectedChampionship._id })
 
     }, [])
+
+    useEffect(() => {
+        const propertiesToCheck = {
+            group: 0,
+            games: 0,
+            points: 0,
+            victories: 0,
+            ties: 0,
+            defeats: 0,
+            goalsScored: 0,
+            goalsConceded: 0,
+            goalDifference: 0,
+            yellowCards: 0,
+            redCards: 0
+        };
+
+        for (const [property, value] of Object.entries(propertiesToCheck)) {
+            if (classification[property] === value) {
+                setClassification(prevClassification => ({
+                    ...prevClassification,
+                    [property]: String(value)
+                }));
+            }
+        }
+    }, [classification]);
+
 
     const handleChange = (e) => {
         setClassification({ ...classification, [e.target.name]: e.target.value })

@@ -22,13 +22,24 @@ const GameForm = ({ handleSubmit, gameData, btnText }) => {
     ))
 
     useEffect(() => {
-        if (game.penaltyStatus === false) {
-            setGame({ ...game, penaltyStatus: 'false' })
+        const propertiesToCheck = {
+            penaltyStatus: false,
+            enableClassification: false,
+            homeGoals: 0,
+            awayGoals: 0,
+            penaltyGoalsHome: 0,
+            awayPenaltyGoals: 0,
+        };
+
+        for (const [property, value] of Object.entries(propertiesToCheck)) {
+            if (game[property] === value) {
+                setGame(prevGame => ({
+                    ...prevGame,
+                    [property]: String(value)
+                }));
+            }
         }
-        if (game.enableClassification === false) {
-            setGame({ ...game, enableClassification: 'false' })
-        }
-    })
+    }, [game]);
 
     useEffect(() => {
 
@@ -78,7 +89,7 @@ const GameForm = ({ handleSubmit, gameData, btnText }) => {
                 handleOnChange={handleOptions}
                 value={game.homeTeam || ''}
             />
-            <Input text='Gols Equipe Casa' type='number' name='homeGoals' handleOnChange={handleChange} value={game.homeGoals === 0 ? 0 : game.homeGoals || ''} />
+            <Input text='Gols Equipe Casa' type='number' name='homeGoals' handleOnChange={handleChange} value={game.homeGoals || ''} />
             <SelectForm
                 text='Equipe Fora'
                 name='awayTeam'
@@ -86,7 +97,7 @@ const GameForm = ({ handleSubmit, gameData, btnText }) => {
                 handleOnChange={handleOptions}
                 value={game.awayTeam || ''}
             />
-            <Input text='Gols Equipe Fora' type='number' name='awayGoals' handleOnChange={handleChange} value={game.awayGoals === 0 ? 0 : game.awayGoals || ''} />
+            <Input text='Gols Equipe Fora' type='number' name='awayGoals' handleOnChange={handleChange} value={game.awayGoals || ''} />
 
             <Input text='Data' type='date' name='date' handleOnChange={handleChange} value={game.date || ''} />
             <Input text='Local' type='text' name='local' handleOnChange={handleChange} value={game.local || ''} />
@@ -107,8 +118,8 @@ const GameForm = ({ handleSubmit, gameData, btnText }) => {
                 handleOnChange={handleOptions}
                 value={game.penaltyStatus || ''}
             />
-            <Input text='Pênaltis Equipe Casa' type='number' name='penaltyGoalsHome' handleOnChange={handleChange} value={game.penaltyGoalsHome === 0 ? 0 : game.penaltyGoalsHome || ''} />
-            <Input text='Pênaltis Equipe Fora' type='number' name='awayPenaltyGoals' handleOnChange={handleChange} value={game.awayPenaltyGoals === 0 ? 0 : game.awayPenaltyGoals || ''} />
+            <Input text='Pênaltis Equipe Casa' type='number' name='penaltyGoalsHome' handleOnChange={handleChange} value={game.penaltyGoalsHome || ''} />
+            <Input text='Pênaltis Equipe Fora' type='number' name='awayPenaltyGoals' handleOnChange={handleChange} value={game.awayPenaltyGoals || ''} />
             <SelectForm
                 text='Ativar Classificação?'
                 name='enableClassification'

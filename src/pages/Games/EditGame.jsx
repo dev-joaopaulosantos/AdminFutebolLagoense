@@ -49,7 +49,15 @@ const EditGame = () => {
     return (
         <section>
             <div>
-                <h1>Editando Jogo:</h1>
+                {game && (
+                    <h1>Editando Jogo:
+                        <span> {game.homeTeam.name} </span>
+                        <span> {game.homeGoals} </span>
+                        <span> x </span>
+                        <span> {game.awayGoals} </span>
+                        <span> {game.awayTeam.name} </span>
+                    </h1>
+                )}
             </div>
             {game && (
                 <GameForm handleSubmit={updateGame} gameData={game} btnText="Atualizar" />
