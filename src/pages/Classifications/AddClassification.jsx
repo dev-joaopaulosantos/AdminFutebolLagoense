@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 // Custom hooks
 import useFlashMessage from '../../hooks/useFlashMessage'
 import { useState } from 'react'
-import ClassificationForm from '../../components/Form/ClassificationForm'
+import ClassificationForm from '../../components/Forms/ClassificationForm'
 
 const AddClassification = () => {
 

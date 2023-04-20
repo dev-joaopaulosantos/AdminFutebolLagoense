@@ -2,7 +2,7 @@ import api from '../../utils/api'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import useFlashMessage from '../../hooks/useFlashMessage'
-import TeamForm from '../../components/Form/TeamForm'
+import TeamForm from '../../components/Forms/TeamForm'
 import LoadingPage from '../LoadingPage/LoadingPage'
 
 const EditTeam = () => {

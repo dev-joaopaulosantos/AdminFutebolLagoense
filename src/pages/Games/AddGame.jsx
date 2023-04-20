@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 // Custom hooks
 import useFlashMessage from '../../hooks/useFlashMessage'
 import { useState } from 'react'
-import GameForm from '../../components/Form/GameForm'
+import GameForm from '../../components/Forms/GameForm'
 
 const AddGame = () => {
     const [token] = useState(localStorage.getItem('Authtoken') || '')

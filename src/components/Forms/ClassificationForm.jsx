@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './Form.css'
-import './Input.css'
-import './SelectForm.css'
+import './Forms.css'
 import Input from './Input'
 import SelectForm from './SelectForm'
 import api from '../../utils/api'

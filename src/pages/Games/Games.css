@@ -18,6 +18,7 @@
   justify-content: center;
   align-items: center;
   padding: 0.2rem;
+  /* background-color: red; */
 }
 .infos-game .header {
   display: flex;
@@ -70,4 +71,33 @@
 }
 .infos #penaltyStatus {
   border-radius: 8px 8px 0 0;
+}
+
+/* Responsividade */
+@media (max-width: 630px){
+  .row-game{
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 555px) {
+  .row-game{
+    font-size: 12px;
+  }
+  .infos-game p{
+    min-width: 80px;
+  }
+  .infos-game .game div {
+    min-width: 80px;
+  }
+  .row-game{
+    padding: 0;
+    gap: .1rem;
+  }
+  .infos-game .infos span{
+    font-size: 1.1rem;
+  }
+  .infos-game .infos .penalty-goals {
+    font-size: .8rem;
+  }
 }

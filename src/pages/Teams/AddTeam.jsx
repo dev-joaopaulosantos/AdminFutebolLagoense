@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 // Custom hooks
 import useFlashMessage from '../../hooks/useFlashMessage'
 import { useState } from 'react'
-import TeamForm from '../../components/Form/TeamForm'
+import TeamForm from '../../components/Forms/TeamForm'
 
 const AddTeam = () => {
    const [token] = useState(localStorage.getItem('Authtoken') || '')

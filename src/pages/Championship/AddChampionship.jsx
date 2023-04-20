@@ -1,7 +1,6 @@
-import './AddChampionship.css'
 import api from '../../utils/api'
 import { useNavigate } from 'react-router-dom'
-import ChampionshipForm from '../../components/Form/ChampionshipForm'
+import ChampionshipForm from '../../components/Forms/ChampionshipForm'
 
 // Custom hooks
 import useFlashMessage from '../../hooks/useFlashMessage'

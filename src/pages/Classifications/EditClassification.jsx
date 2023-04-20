@@ -2,7 +2,7 @@ import api from '../../utils/api'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import useFlashMessage from '../../hooks/useFlashMessage'
-import ClassificationForm from '../../components/Form/ClassificationForm'
+import ClassificationForm from '../../components/Forms/ClassificationForm'
 import LoadingPage from '../LoadingPage/LoadingPage'
 
 const EditClassification = () => {
@@ -43,7 +43,7 @@ const EditClassification = () => {
     return (
         <section>
             <div>
-                <h1>Editando Classificação:</h1>
+                <h1>Editando:</h1>
             </div>
             {classification && (
                 <ClassificationForm handleSubmit={updateClassification} classificationData={classification} btnText="Atualizar" />

@@ -15,7 +15,7 @@
 }
 h1{
     color: var(--dark-blue);
-    margin: 1rem 0 2rem 0;
+    margin: 1rem 0;
     font-size: 1.8rem;
 }
 
@@ -31,4 +31,13 @@ h3{
 }
 .text-danger{
     color: var(--text-danger);
+}
+
+@media (max-width: 555px) {
+    h1{
+        font-size: 1.4rem;
+    }
+    h3{
+        font-size: 16px;
+    }
 }

@@ -2,7 +2,7 @@ import './Classifications.css'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import api from '../../utils/api'
-import '../DashboardGlobal.css'
+import '../Dashboard.css'
 import useFlashMessage from '../../hooks/useFlashMessage'
 import getYear from '../../utils/getYear'
 import LoadingPage from '../LoadingPage/LoadingPage'
@@ -45,7 +45,7 @@ const Classifications = () => {
     return (
         <section className='section-container'>
             <div className='dashboard-header'>
-                <h1>Classificação do campeonato: {selectedChampionship.name} {getYear(selectedChampionship.year)}</h1>
+                <h1>Classificação: {selectedChampionship.name} {getYear(selectedChampionship.year)}</h1>
                 <Link to='/add/classification'>Cadastrar Classificação</Link>
             </div>
             <div className='table-container'>
@@ -53,7 +53,6 @@ const Classifications = () => {
                     <table>
                         <thead>
                             <tr>
-                                <th>Escudo</th>
                                 <th>Nome</th>
                                 <th>P</th>
                                 <th>J</th>
@@ -72,7 +71,6 @@ const Classifications = () => {
                         <tbody>
                             {classifications.map((classification) => (
                                 <tr key={classification._id}>
-                                    <td><img src={classification.team.shield} alt={classification.team.name} /></td>
                                     <td>{classification.team.name}</td>
                                     <td>{classification.points}</td>
                                     <td>{classification.games}</td>

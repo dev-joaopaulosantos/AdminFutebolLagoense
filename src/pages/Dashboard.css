@@ -76,3 +76,36 @@
     background-color: var(--dark-blue);
     color: var(--light-gray);
 }
+
+/* Responsividade */
+
+@media (max-width: 555px) {
+    .dashboard-header {
+        flex-direction: column;
+    }
+    .dashboard-header a {
+        font-size: 14px;
+        width: 100%;
+        text-align: center;
+        padding: .5rem .2rem;
+    }
+    .dashboard-infos{
+        justify-content: center;
+        padding: .5rem;
+    }
+    .dashboard-row{
+        padding: 0;
+    }
+}
+
+@media (max-width: 755px){
+    .actions{
+        gap: .5rem;
+        padding: .5rem;
+        flex-direction: column;
+    }
+    .actions a, .actions button{
+        width: 100%;
+        text-align: center;
+    }
+}

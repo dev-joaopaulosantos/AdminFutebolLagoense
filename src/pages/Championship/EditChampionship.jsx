@@ -2,7 +2,7 @@ import api from '../../utils/api'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import useFlashMessage from '../../hooks/useFlashMessage'
-import ChampionshipForm from '../../components/Form/ChampionshipForm'
+import ChampionshipForm from '../../components/Forms/ChampionshipForm'
 import LoadingPage from '../LoadingPage/LoadingPage'
 
 const EditChampionship = () => {
@@ -49,7 +49,7 @@ const EditChampionship = () => {
     return (
         <section className='section-container'>
             <div>
-                <h1>Editando Campeonato: {championship.name} {championship.year}</h1>
+                <h1>Editando: {championship.name} {championship.year}</h1>
             </div>
             {championship.name && (
                 <ChampionshipForm handleSubmit={updateChampionship} btnText='Atualizar' championshipData={championship} />

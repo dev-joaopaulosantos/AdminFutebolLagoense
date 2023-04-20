@@ -11,8 +11,8 @@ const Navbar = () => {
     return (
         <nav className='navbar'>
             <div className='navbar-logo'>
-                <img src={Logo} alt="Futebol Lagoense" />
-                <h2>ADMIN FUTEBOL LAGOENSE</h2>
+                {/* <img src={Logo} alt="Futebol Lagoense" /> */}
+                <h2>ADMIN API FUTEBOL</h2>
             </div>
             <ul>
                 {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './Form.css'
+import './Forms.css'
 import Input from './Input'
 
 const TeamForm = ({ handleSubmit, teamData, btnText }) => {

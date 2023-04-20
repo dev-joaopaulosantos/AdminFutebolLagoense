@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import api from '../../utils/api'
-import '../DashboardGlobal.css'
+import '../Dashboard.css'
 import './Games.css'
 import useFlashMessage from '../../hooks/useFlashMessage'
 import LoadingPage from '../LoadingPage/LoadingPage'
@@ -44,7 +44,7 @@ const Games = () => {
     return (
         <section className='section-container'>
             <div className='dashboard-header'>
-                <h1>Jogos do campeonato: {selectedChampionship.name} {getYear(selectedChampionship.year)}</h1>
+                <h1>Jogos: {selectedChampionship.name} {getYear(selectedChampionship.year)}</h1>
                 <Link to='/add/game'>Cadastrar Jogo</Link>
             </div>
             <div className='dashboard-container'>

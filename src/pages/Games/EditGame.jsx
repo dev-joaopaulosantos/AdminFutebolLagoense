@@ -2,7 +2,7 @@ import api from '../../utils/api'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import useFlashMessage from '../../hooks/useFlashMessage'
-import GameForm from '../../components/Form/GameForm'
+import GameForm from '../../components/Forms/GameForm'
 import LoadingPage from '../LoadingPage/LoadingPage'
 
 const EditGame = () => {

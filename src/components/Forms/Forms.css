@@ -27,19 +27,29 @@
     color: var(--teal-blue);
     font-weight: bold;
 }
-
-/* Form de pets */
-.preview-images-pet{
-    display: flex;
-    justify-content: center;
-    margin: 1rem;
-}
-.preview-images-pet img{
-    width: 100px;
-    height: 100px;
-    margin-left: 1rem;
-}
-
 select option {
     font-size: 1rem;
+}
+.form-control{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: .5rem;
+}
+.form-control select{
+    padding: .5rem;
+    border: 1px solid #777;
+    border-radius: 5px;
+}
+.form-control label{
+    margin-bottom: .5rem;
+    font-weight: bold;
+    font-size: .8rem;
+}
+.form-control input{
+    padding: .5rem;
+    border: 1px solid #777;
+    border-radius: 5px;
+}
+.form-control input::placeholder{
+    color: #7b7b7b;
 }

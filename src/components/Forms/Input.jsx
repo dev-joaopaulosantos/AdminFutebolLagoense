@@ -1,4 +1,4 @@
-import './Input.css'
+import './Forms.css'
 
 const Input = ({ type, text, name, placeholder, handleOnChange, value }) => {
     return (

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import api from '../../utils/api'
-import '../DashboardGlobal.css'
+import '../Dashboard.css'
 import './Championship.css'
 import useFlashMessage from '../../hooks/useFlashMessage'
 

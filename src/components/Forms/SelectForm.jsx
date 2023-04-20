@@ -1,4 +1,4 @@
-import './SelectForm.css'
+import './Forms.css'
 
 const SelectForm = ({text, name, options, handleOnChange, value}) => {
   return (

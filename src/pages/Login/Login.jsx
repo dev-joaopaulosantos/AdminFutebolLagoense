@@ -1,6 +1,5 @@
-import './Login.css'
-import '../../components/Form/Form.css'
-import Input from '../../components/Form/Input'
+import '../../components/Forms/Forms.css'
+import Input from '../../components/Forms/Input'
 import { useContext, useState } from 'react'
 
 // context
