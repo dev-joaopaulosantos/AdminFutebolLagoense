@@ -48,13 +48,7 @@ const EditGame = () => {
         <section>
             <div>
                 {game && (
-                    <h1>Editando Jogo:
-                        <span> {game.homeTeam.name} </span>
-                        <span> {game.homeGoals} </span>
-                        <span> x </span>
-                        <span> {game.awayGoals} </span>
-                        <span> {game.awayTeam.name} </span>
-                    </h1>
+                    <h1>Editando Jogo:</h1>
                 )}
             </div>
             {game && (

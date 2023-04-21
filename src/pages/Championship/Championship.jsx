@@ -61,7 +61,7 @@ const Championship = () => {
    return (
       <section>
          <div className='dashboard-header'>
-            <h1>Campeonatos</h1>
+            <h1>Campeonatos Cadastrados:</h1>
             <Link to='/add/championship'>Cadastrar Campeonato</Link>
          </div>
          <div className='dashboard-container'>

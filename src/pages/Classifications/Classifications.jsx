@@ -93,7 +93,7 @@ const Classifications = () => {
                     </table>
                 )}
                 {classifications && classifications.length === 0 && (
-                    <h3>Não há Classificações cadastradas no campeonato selecionado!</h3>
+                    <h1>Não há Classificações cadastradas no campeonato selecionado!</h1>
                 )}
                 {!classifications && (
                     <LoadingPage />
