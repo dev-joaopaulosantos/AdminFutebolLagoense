@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom/client'
+const token = localStorage.getItem('authtoken')
 import './index.css'
 
 // configurando router
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 
 // importando pages
 import Championship from './pages/Championship/Championship'
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Championship /> },
       { path: "/login", element: <Login /> },
-      { path: "/add/championship", element: <AddChampionship /> },
+      { path: "/add/championship", element: <AddChampionship />,  },
       { path: "/edit/championship/:id", element: <EditChampionship /> },
       { path: "/teams", element: <Teams /> },
       { path: "/add/team", element: <AddTeam /> },

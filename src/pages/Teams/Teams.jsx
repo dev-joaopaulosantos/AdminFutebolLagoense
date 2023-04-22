@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import api from '../../utils/api'
 import '../Dashboard.css'
 import useFlashMessage from '../../hooks/useFlashMessage'
@@ -9,6 +9,11 @@ const Teams = () => {
    const [teams, setTeams] = useState(null)
    const [token] = useState(localStorage.getItem('Authtoken') || '')
    const { setFlashMessage } = useFlashMessage()
+   const navigateTo = useNavigate()
+
+   if(!token){
+      navigateTo('/login')
+   }
 
    useEffect(() => {
 

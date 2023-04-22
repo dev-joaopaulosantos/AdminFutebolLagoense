@@ -12,6 +12,10 @@ const AddClassification = () => {
     const { setFlashMessage } = useFlashMessage()
     const navigateTo = useNavigate()
 
+    if(!token){
+       navigateTo('/login')
+    }
+
     const registerClassification = async (classification) => {
         let msgType = 'success'
 

@@ -1,6 +1,6 @@
 import './Classifications.css'
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import api from '../../utils/api'
 import '../Dashboard.css'
 import useFlashMessage from '../../hooks/useFlashMessage'
@@ -12,7 +12,11 @@ const Classifications = () => {
     const [token] = useState(localStorage.getItem('Authtoken') || '')
     const { setFlashMessage } = useFlashMessage()
     const [selectedChampionship] = useState(JSON.parse(localStorage.getItem('selectedChampionship')) || {});
+    const navigateTo = useNavigate()
 
+    if(!token){
+       navigateTo('/login')
+    }
     
     useEffect(() => {
 

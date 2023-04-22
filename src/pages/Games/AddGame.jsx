@@ -11,6 +11,10 @@ const AddGame = () => {
     const { setFlashMessage } = useFlashMessage()
     const navigateTo = useNavigate()
 
+    if(!token){
+       navigateTo('/login')
+    }
+
     const registerGame = async (game) => {
         let msgType = 'success'
 

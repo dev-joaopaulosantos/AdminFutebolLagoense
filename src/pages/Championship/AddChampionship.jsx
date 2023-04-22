@@ -11,6 +11,10 @@ const AddChampionship = () => {
    const { setFlashMessage } = useFlashMessage()
    const navigateTo = useNavigate()
 
+   if(!token){
+      navigateTo('/login')
+   }
+
    const registerChampionship = async (championship) => {
       let msgType = 'success'
 

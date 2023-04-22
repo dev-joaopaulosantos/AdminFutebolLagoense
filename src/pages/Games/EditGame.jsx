@@ -12,6 +12,10 @@ const EditGame = () => {
     const navigateTo = useNavigate()
     const { id } = useParams()
 
+    if(!token){
+       navigateTo('/login')
+    }
+
     useEffect(() => {
         api.get(`/api/onegameoriginal/${id}`, {
 

@@ -1,7 +1,7 @@
 import Logo from '../../assets/img/logo.png'
 import './Navbar.css'
 
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import { Context } from '../../context/UserContext'
 
@@ -12,16 +12,16 @@ const Navbar = () => {
         <nav className='navbar'>
             <div className='navbar-logo'>
                 {/* <img src={Logo} alt="Futebol Lagoense" /> */}
-                <h2>ADMIN API FUTEBOL</h2>
+                <h2>ADMIN API FUTEBOL LAGOENSE</h2>
             </div>
             <ul>
                 {
                     authenticated ? (
                         <>
-                            <li><Link to={"/"}>Campeonatos</Link></li>
-                            <li><Link to={"/games"}>Jogos</Link></li>
-                            <li><Link to={"/classifications"}>Classificações</Link></li>
-                            <li><Link to={"/teams"}>Equipes</Link></li>
+                            <li><NavLink to={"/"}>Campeonatos</NavLink></li>
+                            <li><NavLink to={"/games"}>Jogos</NavLink></li>
+                            <li><NavLink to={"/classifications"}>Classificações</NavLink></li>
+                            <li><NavLink to={"/teams"}>Equipes</NavLink></li>
                             <li onClick={logout} >Sair</li>
                         </>
                     ) : (

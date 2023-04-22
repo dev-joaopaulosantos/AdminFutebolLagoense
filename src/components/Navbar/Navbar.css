@@ -17,6 +17,7 @@
 .navbar ul{
     display: flex;
     align-items: center;
+    gap: .8rem;
     list-style: none;
 }
 .navbar li, .navbar a{
@@ -25,9 +26,9 @@
     font-weight: bold;
     cursor: pointer;
     transition: .5s;
-    padding: .5rem .2rem;
-    margin: 0 .2rem;
+    padding: .5rem 0rem;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 .navbar li:hover{
     background-color: var(--light-gray);
@@ -36,6 +37,9 @@
 /* Quando der hover no 'li' irá afetar o 'a' dentro de '.navbar li' */
 .navbar li:hover > a{ 
     color: var(--dark-green);
+}
+.active{
+    border-bottom: 1px solid var(--light-gray);
 }
 
 /* Responsividade */

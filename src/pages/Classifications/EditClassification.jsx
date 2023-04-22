@@ -12,6 +12,10 @@ const EditClassification = () => {
     const navigateTo = useNavigate()
     const { id } = useParams()
 
+    if(!token){
+       navigateTo('/login')
+    }
+
     useEffect(() => {
         api.get(`/api/oneclassification/${id}`).then((response) => {
             setClassification(response.data.classification)

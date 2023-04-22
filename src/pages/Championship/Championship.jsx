@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import api from '../../utils/api'
 import '../Dashboard.css'
 import './Championship.css'
@@ -14,6 +14,11 @@ const Championship = () => {
    const [token] = useState(localStorage.getItem('Authtoken') || '')
    const { setFlashMessage } = useFlashMessage()
    const [selectedChampionship, setSelectedChampionship] = useState('');
+   const navigateTo = useNavigate()
+
+   if(!token){
+      navigateTo('/login')
+   }
 
    useEffect(() => {
 
@@ -49,13 +54,10 @@ const Championship = () => {
          setSelectedChampionship(JSON.parse(savedChampionship));
       }
    }, []);
-   useEffect(() => {
-      
-   }, [championships])
 
    const handleSelectChampionship = (championship) => {
-      setSelectedChampionship(championship);
       localStorage.setItem('selectedChampionship', JSON.stringify(championship));
+      setSelectedChampionship(championship);
    }
 
    return (

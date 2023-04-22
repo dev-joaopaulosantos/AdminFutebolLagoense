@@ -11,6 +11,10 @@ const AddTeam = () => {
    const { setFlashMessage } = useFlashMessage()
    const navigateTo = useNavigate()
 
+   if(!token){
+      navigateTo('/login')
+   }
+
    const registerTeam = async (team) => {
       let msgType = 'success'
 

@@ -11,8 +11,8 @@ const ChampionshipForm = ({ handleSubmit, championshipData, btnText }) => {
     ]
 
     useEffect(() => {
-        if(championship.groupStage === false){
-            setChampionship({...championship, groupStage: 'false'})
+        if (championship.groupStage === false) {
+            setChampionship({ ...championship, groupStage: 'false' })
         }
     })
 
@@ -30,7 +30,7 @@ const ChampionshipForm = ({ handleSubmit, championshipData, btnText }) => {
 
     }
 
-    
+
 
     return (
         <form onSubmit={submit} className='form-container'>
@@ -43,6 +43,13 @@ const ChampionshipForm = ({ handleSubmit, championshipData, btnText }) => {
                 handleOnChange={handlegroupStage}
                 value={championship.groupStage || ''}
             />
+            <Input text='Campeão' type='text' name='champion' placeholder='Digite a premiação do campeonato' handleOnChange={handleChange} value={championship.champion || ''} />
+            <Input text='Segundo Colocado' type='text' name='secondPlace' placeholder='Segundo colocado do campeonato' handleOnChange={handleChange} value={championship.secondPlace || ''} />
+            <Input text='Terceiro Colocado' type='text' name='thirdPlace' placeholder='Terceiro colocado do campeonato' handleOnChange={handleChange} value={championship.thirdPlace || ''} />
+            <Input text='Premiação' type='text' name='award' placeholder='Premiação do campeonato' handleOnChange={handleChange} value={championship.award || ''} />
+            <Input text='Artilheiro' type='text' name='goalScorer' placeholder='Artilheiro do campeonato' handleOnChange={handleChange} value={championship.goalScorer || ''} />
+            <Input text='Melhor Jogador' type='text' name='bestPlayer' placeholder='Melhor jogador do campeonato' handleOnChange={handleChange} value={championship.bestPlayer || ''} />
+            <Input text='Melhor Goleiro' type='text' name='bestGoalkeeper' placeholder='Melhor goleiro do campeonato' handleOnChange={handleChange} value={championship.bestGoalkeeper || ''} />
             <input type="submit" value={btnText} />
         </form>
     )
