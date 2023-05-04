@@ -71,7 +71,7 @@ const Championship = () => {
                championships.map((championship) => (
                   <div key={championship._id} className={`dashboard-row ${selectedChampionship && selectedChampionship._id === championship._id ? 'selected' : ''}`}>
                      <div className='dashboard-infos'>
-                        <h3>{championship.name}</h3>
+                        <h3>{championship.name} {championship.selected ? <span className='info' style={{fontSize: '12px'}}>Atual</span> : ''}</h3>
                         <p><span className='bold'>Ano: </span>{getYear(championship.year)}</p>
                         <p className='info'>Fase de grupos: {championship.groupStage ? <span className='text-success'>Sim</span> : <span className='text-danger'>Não</span>}</p>
                      </div>
