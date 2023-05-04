@@ -14,23 +14,23 @@ const Navbar = () => {
                 {/* <img src={Logo} alt="Futebol Lagoense" /> */}
                 <h2>ADMIN API FUTEBOL LAGOENSE</h2>
             </div>
-            <ul>
+            <div className='nav-options'>
                 {
                     authenticated ? (
                         <>
-                            <li><NavLink to={"/"}>Campeonatos</NavLink></li>
-                            <li><NavLink to={"/games"}>Jogos</NavLink></li>
-                            <li><NavLink to={"/classifications"}>Classificações</NavLink></li>
-                            <li><NavLink to={"/teams"}>Equipes</NavLink></li>
-                            <li onClick={logout} >Sair</li>
+                            <NavLink to={"/"}>Campeonatos</NavLink>
+                            <NavLink to={"/games"}>Jogos</NavLink>
+                            <NavLink to={"/classifications"}>Classificações</NavLink>
+                            <NavLink to={"/teams"}>Equipes</NavLink>
+                            <button onClick={logout} >Sair</button>
                         </>
                     ) : (
                         <>
-                            <li><Link to={"/login"}>Entrar</Link></li>
+                            <Link to={"/login"}>Entrar</Link>
                         </>
                     )
                 }
-            </ul>
+            </div>
         </nav>
     )
 }
