@@ -29,7 +29,7 @@
   font-size: 1.05rem;
   cursor: pointer;
   transition: 0.5s;
-  padding: 0.5rem 0.2rem;
+  padding: 0.5rem;
   border-radius: 5px;
 }
 .navbar a:hover {
@@ -64,6 +64,7 @@ a.active {
   .navbar button {
     margin: 0 1px;
     font-size: 12px;
+    padding: .5rem .2rem;
   }
   .navbar {
     justify-content: center;

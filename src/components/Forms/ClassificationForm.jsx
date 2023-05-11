@@ -5,7 +5,7 @@ import SelectForm from './SelectForm'
 import api from '../../utils/api'
 import getYear from '../../utils/getYear'
 
-const ClassificationForm = ({ handleSubmit, classificationData, btnText }) => {
+const ClassificationForm = ({ handleSubmit, classificationData, btnText, isLoading, disabled }) => {
     const [classification, setClassification] = useState(classificationData || {})
     const [championships, setChampionships] = useState([])
     const [teams, setTeams] = useState([])
@@ -71,6 +71,7 @@ const ClassificationForm = ({ handleSubmit, classificationData, btnText }) => {
         const value = e.target.value
         setClassification({ ...classification, team: value })
     }
+
     const submit = (e) => {
         e.preventDefault()
         handleSubmit(classification)
@@ -103,7 +104,18 @@ const ClassificationForm = ({ handleSubmit, classificationData, btnText }) => {
             <Input text='Saldo de Gols' type='number' name='goalDifference' handleOnChange={handleChange} value={classification.goalDifference || ''} />
             <Input text='Cartões Amarelos' type='number' name='yellowCards' handleOnChange={handleChange} value={classification.yellowCards || ''} />
             <Input text='Cartões Vermelhos' type='number' name='redCards' handleOnChange={handleChange} value={classification.redCards || ''} />
-            <input type="submit" value={btnText} />
+            {isLoading === false && (
+                <input type="submit" value={btnText} />
+            )}
+            {isLoading === true && (
+                <input
+                    type="submit"
+                    value="Aguarde..."
+                    style={{ backgroundColor: "var(--dark-blue)" }}
+                    disabled
+                />
+            )}
+
         </form>
     )
 }

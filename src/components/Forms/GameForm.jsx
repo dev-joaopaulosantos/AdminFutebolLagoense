@@ -11,7 +11,7 @@ const GameForm = ({ handleSubmit, gameData, btnText }) => {
     const [selectedChampionship] = useState(JSON.parse(localStorage.getItem('selectedChampionship')))
 
     const options = [{ text: 'Sim', value: true }, { text: 'Não', value: false }]
-    const optionsStatus = [{ text: 'Encerrado', value: 'encerrado' }, { text: 'W.O', value: 'W.O' }, { text: 'Ao vivo', value: 'Ao vivo' }]
+    const optionsStatus = [{ text: 'FIM', value: 'FIM' }, { text: 'W.O', value: 'W.O' }, { text: 'AO VIVO', value: 'AO VIVO' }]
 
     const optionsChampionships = championships.map((championship) => (
         { key: championship._id, text: `${championship.name} ${getYear(championship.year)}`, value: championship._id }
@@ -62,6 +62,7 @@ const GameForm = ({ handleSubmit, gameData, btnText }) => {
         const value = e.target.value
         setGame({ ...game, [e.target.name]: value })
     }
+    
     const submit = (e) => {
         e.preventDefault()
         handleSubmit(game)

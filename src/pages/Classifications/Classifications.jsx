@@ -6,18 +6,20 @@ import '../Dashboard.css'
 import useFlashMessage from '../../hooks/useFlashMessage'
 import getYear from '../../utils/getYear'
 import LoadingPage from '../LoadingPage/LoadingPage'
+import { RxReload } from 'react-icons/rx'
 
 const Classifications = () => {
     const [classifications, setclassifications] = useState(null)
     const [token] = useState(localStorage.getItem('Authtoken') || '')
     const { setFlashMessage } = useFlashMessage()
     const [selectedChampionship] = useState(JSON.parse(localStorage.getItem('selectedChampionship')) || {});
+    const [isLoading, setIsLoading] = useState(false) // Estado para indicar se está carregando
     const navigateTo = useNavigate()
 
-    if(!token){
-       navigateTo('/login')
+    if (!token) {
+        navigateTo('/login')
     }
-    
+
     useEffect(() => {
 
         api.get(`/api/classification/${selectedChampionship._id}`).then((response) => {
@@ -28,6 +30,7 @@ const Classifications = () => {
 
     const removeClassification = async (id) => {
         let msgType = 'success'
+        setIsLoading(true) // Ativar indicador de carregamento
 
         const data = await api.delete(`/api/classification/${id}`, {
             headers: {
@@ -41,7 +44,9 @@ const Classifications = () => {
         }).catch((err) => {
             msgType = 'error'
             return err.response.data
-        });
+        }).finally(() => {
+            setIsLoading(false) // Desativar indicador de carregamento
+        })
 
         setFlashMessage(data.message, msgType)
     }
@@ -89,7 +94,12 @@ const Classifications = () => {
                                     <td>{classification.group}</td>
                                     <td className='table-actions'>
                                         <Link to={`/edit/classification/${classification._id}`}>Editar</Link>
-                                        <button className='danger' onClick={() => { removeClassification(classification._id) }}>Excluir</button>
+                                        {isLoading === false && (
+                                            <button className='danger' onClick={() => { removeClassification(classification._id) }}>Excluir</button>
+                                        )}
+                                        {isLoading == true && (
+                                            <button style={{ backgroundColor: 'var(--dark-blue)', color: 'var(--light-gray)' }} className='danger'>Aguarde</button>
+                                        )}
                                     </td>
                                 </tr>
                             ))}

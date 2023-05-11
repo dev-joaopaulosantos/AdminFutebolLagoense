@@ -10,17 +10,18 @@ import getYear from '../../utils/getYear'
 import LoadingPage from '../LoadingPage/LoadingPage'
 
 const Championship = () => {
-   const [championships, setChampionships] = useState(null)
+   const [championships, setChampionships] = useState()
    const [token] = useState(localStorage.getItem('Authtoken') || '')
    const { setFlashMessage } = useFlashMessage()
    const [selectedChampionship, setSelectedChampionship] = useState('');
    const navigateTo = useNavigate()
 
-   if(!token){
-      navigateTo('/login')
-   }
+
 
    useEffect(() => {
+      if(!token){
+         navigateTo('/login')
+      }
 
       api.get('/api/championships').then((response) => {
          setChampionships(response.data.championships)
