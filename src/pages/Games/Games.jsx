@@ -12,10 +12,11 @@ const Games = () => {
     const [token] = useState(localStorage.getItem('Authtoken') || '')
     const { setFlashMessage } = useFlashMessage()
     const [selectedChampionship] = useState(JSON.parse(localStorage.getItem('selectedChampionship')))
+    const [isLoading, setIsLoading] = useState(false) // Estado para indicar se está carregando
     const navigateTo = useNavigate()
 
-    if(!token){
-       navigateTo('/login')
+    if (!token) {
+        navigateTo('/login')
     }
 
     useEffect(() => {
@@ -28,6 +29,7 @@ const Games = () => {
 
     const removeGame = async (id) => {
         let msgType = 'success'
+        setIsLoading(true) // Ativar indicador de carregamento
 
         const data = await api.delete(`/api/games/${id}`, {
             headers: {
@@ -41,7 +43,9 @@ const Games = () => {
         }).catch((err) => {
             msgType = 'error'
             return err.response.data
-        });
+        }).finally(() => {
+            setIsLoading(false) // Desativar indicador de carregamento
+        })
 
         setFlashMessage(data.message, msgType)
     }
@@ -86,7 +90,12 @@ const Games = () => {
                             </div>
                             <div className='actions' id='actions-game'>
                                 <Link to={`/edit/game/${game._id}`}>Editar</Link>
-                                <button className='danger' onClick={() => { removeGame(game._id) }}>Excluir</button>
+                                {isLoading === false && (
+                                    <button className='danger' onClick={() => { removeGame(game._id) }}>Excluir</button>
+                                )}
+                                {isLoading == true && (
+                                    <button id='btn-disabled' className='danger'>Aguarde</button>
+                                )}
                             </div>
                         </div>
                     ))
