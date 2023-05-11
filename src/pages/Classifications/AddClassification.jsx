@@ -50,7 +50,6 @@ const AddClassification = () => {
                 handleSubmit={registerClassification}
                 btnText="Cadastrar"
                 isLoading={isLoading}
-                disabled={isLoading ? true : false}
             />
         </section>
     )

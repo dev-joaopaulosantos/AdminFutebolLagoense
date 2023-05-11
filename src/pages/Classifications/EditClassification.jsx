@@ -9,11 +9,12 @@ const EditClassification = () => {
     const [classification, setClassification] = useState(null)
     const [token] = useState(localStorage.getItem('Authtoken') || '')
     const { setFlashMessage } = useFlashMessage()
+    const [isLoading, setIsLoading] = useState(false) // Estado para indicar se está carregando
     const navigateTo = useNavigate()
     const { id } = useParams()
 
-    if(!token){
-       navigateTo('/login')
+    if (!token) {
+        navigateTo('/login')
     }
 
     useEffect(() => {
@@ -25,6 +26,7 @@ const EditClassification = () => {
 
     const updateClassification = async (classification) => {
         let msgType = 'success'
+        setIsLoading(true) // Ativar indicador de carregamento
 
         const data = await api.put(`/api/classification/${classification._id}`, classification, {
             headers: {
@@ -36,7 +38,9 @@ const EditClassification = () => {
         }).catch((err) => {
             msgType = 'error'
             return err.response.data
-        });
+        }).finally(() => {
+            setIsLoading(false) // Desativar indicador de carregamento
+        })
 
         setFlashMessage(data.message, msgType)
         if (msgType !== 'error') {
@@ -50,7 +54,12 @@ const EditClassification = () => {
                 <h1>Editando:</h1>
             </div>
             {classification && (
-                <ClassificationForm handleSubmit={updateClassification} classificationData={classification} btnText="Atualizar" />
+                <ClassificationForm
+                    handleSubmit={updateClassification}
+                    classificationData={classification}
+                    isLoading={isLoading}
+                    btnText="Atualizar"
+                />
             )}
             {!classification && (
                 <LoadingPage />

@@ -9,11 +9,13 @@ const EditGame = () => {
     const [game, setGame] = useState()
     const [token] = useState(localStorage.getItem('Authtoken') || '')
     const { setFlashMessage } = useFlashMessage()
+    const [isLoading, setIsLoading] = useState(false) // Estado para indicar se está carregando
+
     const navigateTo = useNavigate()
     const { id } = useParams()
 
-    if(!token){
-       navigateTo('/login')
+    if (!token) {
+        navigateTo('/login')
     }
 
     useEffect(() => {
@@ -29,6 +31,7 @@ const EditGame = () => {
 
     const updateGame = async (game) => {
         let msgType = 'success'
+        setIsLoading(true) // Ativar indicador de carregamento
 
         const data = await api.put(`/api/games/${game._id}`, game, {
             headers: {
@@ -40,7 +43,9 @@ const EditGame = () => {
         }).catch((err) => {
             msgType = 'error'
             return err.response.data
-        });
+        }).finally(() => {
+            setIsLoading(false) // Desativar indicador de carregamento
+        })
 
         setFlashMessage(data.message, msgType)
         if (msgType !== 'error') {
@@ -56,7 +61,11 @@ const EditGame = () => {
                 )}
             </div>
             {game && (
-                <GameForm handleSubmit={updateGame} gameData={game} btnText="Atualizar" />
+                <GameForm
+                    handleSubmit={updateGame}
+                    gameData={game} btnText="Atualizar"
+                    isLoading={isLoading}
+                />
             )}
             {!game && (
                 <LoadingPage />

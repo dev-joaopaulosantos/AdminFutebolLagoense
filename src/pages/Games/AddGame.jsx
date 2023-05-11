@@ -9,14 +9,16 @@ import GameForm from '../../components/Forms/GameForm'
 const AddGame = () => {
     const [token] = useState(localStorage.getItem('Authtoken') || '')
     const { setFlashMessage } = useFlashMessage()
+    const [isLoading, setIsLoading] = useState(false) // Estado para indicar se está carregando
     const navigateTo = useNavigate()
 
-    if(!token){
-       navigateTo('/login')
+    if (!token) {
+        navigateTo('/login')
     }
 
     const registerGame = async (game) => {
         let msgType = 'success'
+        setIsLoading(true) // Ativar indicador de carregamento
 
         const data = await api.post('/api/games', game, {
             headers: {
@@ -28,7 +30,9 @@ const AddGame = () => {
         }).catch((err) => {
             msgType = 'error'
             return err.response.data
-        });
+        }).finally(() => {
+            setIsLoading(false) // Desativar indicador de carregamento
+        })
 
         setFlashMessage(data.message, msgType)
         if (msgType !== 'error') {
@@ -38,11 +42,15 @@ const AddGame = () => {
 
     return (
         <section>
-        <div className='addteam-header'>
-           <h1>Cadastrar Jogo</h1>
-        </div>
-        <GameForm handleSubmit={registerGame} btnText="Cadastrar" />
-     </section>
+            <div className='addteam-header'>
+                <h1>Cadastrar Jogo</h1>
+            </div>
+            <GameForm
+                handleSubmit={registerGame}
+                btnText="Cadastrar"
+                isLoading={isLoading}
+            />
+        </section>
     )
 }
 

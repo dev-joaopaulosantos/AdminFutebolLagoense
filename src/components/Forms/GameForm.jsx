@@ -4,7 +4,7 @@ import SelectForm from './SelectForm'
 import api from '../../utils/api'
 import getYear from '../../utils/getYear'
 
-const GameForm = ({ handleSubmit, gameData, btnText }) => {
+const GameForm = ({ handleSubmit, gameData, btnText, isLoading }) => {
     const [game, setGame] = useState(gameData || {})
     const [championships, setChampionships] = useState([])
     const [teams, setTeams] = useState([])
@@ -62,7 +62,7 @@ const GameForm = ({ handleSubmit, gameData, btnText }) => {
         const value = e.target.value
         setGame({ ...game, [e.target.name]: value })
     }
-    
+
     const submit = (e) => {
         e.preventDefault()
         handleSubmit(game)
@@ -122,7 +122,17 @@ const GameForm = ({ handleSubmit, gameData, btnText }) => {
                 handleOnChange={handleOptions}
                 value={game.enableClassification || ''}
             />
-            <input type="submit" value={btnText} />
+            {isLoading === false && (
+                <input type="submit" value={btnText} />
+            )}
+            {isLoading === true && (
+                <input
+                    type="submit"
+                    value="Aguarde..."
+                    id='btn-disabled'
+                    disabled
+                />
+            )}
         </form>
     )
 }
