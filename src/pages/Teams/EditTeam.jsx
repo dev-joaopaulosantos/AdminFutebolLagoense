@@ -9,11 +9,12 @@ const EditTeam = () => {
     const [team, setTeam] = useState({})
     const [token] = useState(localStorage.getItem('Authtoken') || '')
     const { setFlashMessage } = useFlashMessage()
+    const [isLoading, setIsLoading] = useState(false) // Estado para indicar se está carregando
     const navigateTo = useNavigate()
     const { id } = useParams()
 
-    if(!token){
-       navigateTo('/login')
+    if (!token) {
+        navigateTo('/login')
     }
 
     useEffect(() => {
@@ -23,13 +24,14 @@ const EditTeam = () => {
             }
         }).then((response) => {
             setTeam(response.data.team)
-            
+
         });
 
     }, [token, id]);
 
     const updateTeam = async (team) => {
         let msgType = 'success'
+        setIsLoading(true) // Ativar indicador de carregamento
 
         const data = await api.put(`/api/teams/${team._id}`, team, {
             headers: {
@@ -41,7 +43,9 @@ const EditTeam = () => {
         }).catch((err) => {
             msgType = 'error'
             return err.response.data
-        });
+        }).finally(() => {
+            setIsLoading(false) // Desativar indicador de carregamento
+        })
 
         setFlashMessage(data.message, msgType)
         if (msgType !== 'error') {
@@ -55,7 +59,12 @@ const EditTeam = () => {
                 <h1>Editando Equipe: {team.name}</h1>
             </div>
             {team.name && (
-                <TeamForm handleSubmit={updateTeam} btnText='Atualizar' teamData={team} />
+                <TeamForm
+                    handleSubmit={updateTeam}
+                    btnText='Atualizar'
+                    teamData={team}
+                    isLoading={isLoading}
+                />
             )}
             {!team.name && (
                 <LoadingPage />

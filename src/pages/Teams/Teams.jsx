@@ -9,9 +9,10 @@ const Teams = () => {
    const [teams, setTeams] = useState(null)
    const [token] = useState(localStorage.getItem('Authtoken') || '')
    const { setFlashMessage } = useFlashMessage()
+   const [isLoading, setIsLoading] = useState(false) // Estado para indicar se está carregando
    const navigateTo = useNavigate()
 
-   if(!token){
+   if (!token) {
       navigateTo('/login')
    }
 
@@ -25,6 +26,7 @@ const Teams = () => {
 
    const removeTeam = async (id) => {
       let msgType = 'success'
+      setIsLoading(true) // Ativar indicador de carregamento
 
       const data = await api.delete(`/api/teams/${id}`, {
          headers: {
@@ -38,7 +40,9 @@ const Teams = () => {
       }).catch((err) => {
          msgType = 'error'
          return err.response.data
-      });
+      }).finally(() => {
+         setIsLoading(false) // Desativar indicador de carregamento
+      })
 
       setFlashMessage(data.message, msgType)
    }
@@ -59,7 +63,12 @@ const Teams = () => {
                      </div>
                      <div className='actions'>
                         <Link to={`/edit/team/${team._id}`}>Editar</Link>
-                        <button className='danger' onClick={() => { removeTeam(team._id) }}>Excluir</button>
+                        {isLoading === false && (
+                           <button className='danger' onClick={() => { removeTeam(team._id) }}>Excluir</button>
+                        )}
+                        {isLoading == true && (
+                           <button id='btn-disabled' className='danger'>Aguarde</button>
+                        )}
                      </div>
                   </div>
                ))
