@@ -111,7 +111,7 @@ const ClassificationForm = ({ handleSubmit, classificationData, btnText, isLoadi
                 <input
                     type="submit"
                     value="Aguarde..."
-                    style={{ backgroundColor: "var(--dark-blue)" }}
+                    id='btn-disabled'
                     disabled
                 />
             )}

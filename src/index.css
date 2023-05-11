@@ -32,6 +32,10 @@ h3{
 .text-danger{
     color: var(--text-danger);
 }
+#btn-disabled{
+    background-color: var(--dark-blue);
+    color: var(--light-gray)
+}
 
 @media (max-width: 555px) {
     h1{

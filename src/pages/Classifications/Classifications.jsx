@@ -6,7 +6,6 @@ import '../Dashboard.css'
 import useFlashMessage from '../../hooks/useFlashMessage'
 import getYear from '../../utils/getYear'
 import LoadingPage from '../LoadingPage/LoadingPage'
-import { RxReload } from 'react-icons/rx'
 
 const Classifications = () => {
     const [classifications, setclassifications] = useState(null)
@@ -98,7 +97,7 @@ const Classifications = () => {
                                             <button className='danger' onClick={() => { removeClassification(classification._id) }}>Excluir</button>
                                         )}
                                         {isLoading == true && (
-                                            <button style={{ backgroundColor: 'var(--dark-blue)', color: 'var(--light-gray)' }} className='danger'>Aguarde</button>
+                                            <button id='btn-disabled' className='danger'>Aguarde</button>
                                         )}
                                     </td>
                                 </tr>
