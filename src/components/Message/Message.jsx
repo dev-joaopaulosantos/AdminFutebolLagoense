@@ -8,7 +8,7 @@ const Message = () => {
   const [type, setType] = useState("")
 
   useEffect(() => {
-    bus.addListener('flash', ({message, type}) => {
+    bus.addListener('flash', ({ message, type }) => {
       setVisibility(true)
       setMessage(message)
       setType(type)
@@ -21,7 +21,9 @@ const Message = () => {
 
   return (
     visibility && (
-      <div className={`message ${type}`}>{message}</div>
+      <div className='container-message'>
+        <div className={`message ${type}`}>{message}</div>
+      </div>
     )
   )
 }

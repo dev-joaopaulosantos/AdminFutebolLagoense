@@ -1,8 +1,14 @@
+.container-message{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .message{
-    max-width: 60%;
+    width: 60%;
     padding: 1rem;
     border: 1px solid #000;
-    margin: 1rem auto 0;
     text-align: center;
     border-radius: 5px;
 }
