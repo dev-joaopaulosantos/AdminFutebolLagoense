@@ -3,7 +3,7 @@ import './Forms.css'
 import Input from './Input'
 import SelectForm from './SelectForm'
 
-const ChampionshipForm = ({ handleSubmit, championshipData, btnText }) => {
+const ChampionshipForm = ({ handleSubmit, championshipData, btnText, isLoading }) => {
     const [championship, setChampionship] = useState(championshipData || {})
     const groupStages = [
         { text: 'Sim', value: true },
@@ -61,7 +61,17 @@ const ChampionshipForm = ({ handleSubmit, championshipData, btnText }) => {
                 handleOnChange={handlegroupStage}
                 value={championship.selected || ''}
             />
-            <input type="submit" value={btnText} />
+            {isLoading === false && (
+                <input type="submit" value={btnText} />
+            )}
+            {isLoading === true && (
+                <input
+                    type="submit"
+                    value="Aguarde..."
+                    id='btn-disabled'
+                    disabled
+                />
+            )}
         </form>
     )
 }

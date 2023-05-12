@@ -9,11 +9,12 @@ const EditChampionship = () => {
     const [championship, setChampionship] = useState({})
     const [token] = useState(localStorage.getItem('Authtoken') || '')
     const { setFlashMessage } = useFlashMessage()
+    const [isLoading, setIsLoading] = useState(false) // Estado para indicar se está carregando
     const navigateTo = useNavigate()
     const { id } = useParams()
 
-    if(!token){
-       navigateTo('/login')
+    if (!token) {
+        navigateTo('/login')
     }
 
     useEffect(() => {
@@ -31,6 +32,7 @@ const EditChampionship = () => {
 
     const updateChampionship = async (championship) => {
         let msgType = 'success'
+        setIsLoading(true) // Ativar indicador de carregamento
 
         const data = await api.put(`/api/championships/${championship._id}`, championship, {
             headers: {
@@ -42,7 +44,9 @@ const EditChampionship = () => {
         }).catch((err) => {
             msgType = 'error'
             return err.response.data
-        });
+        }).finally(() => {
+            setIsLoading(false) // Desativar indicador de carregamento
+        })
 
         setFlashMessage(data.message, msgType)
         if (msgType !== 'error') {
@@ -56,7 +60,12 @@ const EditChampionship = () => {
                 <h1>Editando: {championship.name} {championship.year}</h1>
             </div>
             {championship.name && (
-                <ChampionshipForm handleSubmit={updateChampionship} btnText='Atualizar' championshipData={championship} />
+                <ChampionshipForm
+                    handleSubmit={updateChampionship}
+                    championshipData={championship}
+                    isLoading={isLoading}
+                    btnText='Atualizar'
+                />
             )}
             {!championship.name && (
                 <LoadingPage />

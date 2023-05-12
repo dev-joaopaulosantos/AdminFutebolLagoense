@@ -14,12 +14,13 @@ const Championship = () => {
    const [token] = useState(localStorage.getItem('Authtoken') || '')
    const { setFlashMessage } = useFlashMessage()
    const [selectedChampionship, setSelectedChampionship] = useState('');
+   const [isLoading, setIsLoading] = useState(false) // Estado para indicar se está carregando
    const navigateTo = useNavigate()
 
 
 
    useEffect(() => {
-      if(!token){
+      if (!token) {
          navigateTo('/login')
       }
 
@@ -31,6 +32,7 @@ const Championship = () => {
 
    const removeChampionship = async (id) => {
       let msgType = 'success'
+      setIsLoading(true) // Ativar indicador de carregamento
 
       const data = await api.delete(`/api/championships/${id}`, {
          headers: {
@@ -44,7 +46,9 @@ const Championship = () => {
       }).catch((err) => {
          msgType = 'error'
          return err.response.data
-      });
+      }).finally(() => {
+         setIsLoading(false) // Desativar indicador de carregamento
+      })
 
       setFlashMessage(data.message, msgType)
    }
@@ -72,14 +76,19 @@ const Championship = () => {
                championships.map((championship) => (
                   <div key={championship._id} className={`dashboard-row ${selectedChampionship && selectedChampionship._id === championship._id ? 'selected' : ''}`}>
                      <div className='dashboard-infos'>
-                        <h3>{championship.name} {championship.selected ? <span className='info' style={{fontSize: '12px'}}>Atual</span> : ''}</h3>
+                        <h3>{championship.name} {championship.selected ? <span className='info' style={{ fontSize: '12px' }}>Atual</span> : ''}</h3>
                         <p><span className='bold'>Ano: </span>{getYear(championship.year)}</p>
                         <p className='info'>Fase de grupos: {championship.groupStage ? <span className='text-success'>Sim</span> : <span className='text-danger'>Não</span>}</p>
                      </div>
                      <div className='actions'>
                         <button className='select-button' onClick={() => handleSelectChampionship(championship)}>Selecionar</button>
                         <Link to={`/edit/championship/${championship._id}`}>Editar</Link>
-                        <button className='danger' onClick={() => { removeChampionship(championship._id) }}>Excluir</button>
+                        {isLoading === false && (
+                           <button className='danger' onClick={() => { removeChampionship(championship._id) }}>Excluir</button>
+                        )}
+                        {isLoading == true && (
+                           <button id='btn-disabled' className='danger'>Aguarde</button>
+                        )}
                      </div>
                   </div>
                ))
